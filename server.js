@@ -45,15 +45,15 @@ app.use(
     }),
   })
 );
+app.use(passUserToView);
 
 // PUBLIC
 app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-app.use(passUserToView);
 app.use('/auth', authController);
-app.use(passUserToView);
+app.use(isSignedIn);
 app.use('/recipes', recipesController);
 app.use('/ingredients', ingredientsController);
 

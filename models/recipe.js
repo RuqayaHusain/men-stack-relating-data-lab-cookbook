@@ -13,10 +13,12 @@ const recipeSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    ingredients: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ingredient',
-    },
+    ingredients: [ // multiple ingredients can belong to multiple recipes
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Ingredient',
+        }
+    ],
 });
 
 const Recipe = mongoose.model('Recipe', recipeSchema);
